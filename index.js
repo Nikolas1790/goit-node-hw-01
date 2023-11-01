@@ -1,22 +1,28 @@
-const fs = require('fs/promises')
-const path = require('path')
+const contacts = require('./contacts.js')
+// const argv = require('yargs').argv;
 
-const contactsPath = path.join(__dirname, 'contacts.json')
+const invokeAction = async ({ action, id, name, email, phone }) => {
+  switch (action) {
+    case 'list':
+      const allContacts = await contacts.listContacts();
+      return console.log(allContacts)
+      
+    case 'get':
+        const oneContact = await contacts.getContactById(id);
+        return console.log(oneContact)
 
-// const a = require('./db/contacts.json')
-// console.log(a)
+    case 'add':
+        const newContact = await contacts.addContact(name, email, phone)
+        return console.log(newContact)
 
-const getAll = async() => {
-    const data = await fs.readFile(contactsPath)
-    console.log(data)
-   return JSON.parse(data) 
+    case 'remove':
+      // ... id
+      break;
+
+    default:
+      console.warn('\x1B[31m Unknown action type!');
+  }
 }
 
-const writeFile = async() => {
-    
-}
-
-module.exports ={
-    getAll,
-    writeFile
-}
+// invokeAction({action: 'list'});
+invokeAction({action: 'get', id: 'AeHIrLTr6JkxGE6SN-0Rw'});
