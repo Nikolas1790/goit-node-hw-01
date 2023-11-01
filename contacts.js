@@ -7,6 +7,15 @@ const listContacts = async () => {
     const data = await fs.readFile(contactsPath)
     console.log(data)
     return JSON.parse(data) 
+    
+    // try {
+    //   const data = await fs.readFile(contactsPath);
+    //   console.log(data);
+    //   return JSON.parse(data);
+    // } catch (error) {
+    //   console.error('An error occurred while reading contacts:', error);
+    //   throw error; // You can rethrow the error to propagate it to the caller if needed.
+    // }
 }  
   async function getContactById(contactId) {
     const contacts = await listContacts();
