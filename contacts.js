@@ -7,15 +7,6 @@ const listContacts = async () => {
     const data = await fs.readFile(contactsPath)
     console.log(data)
     return JSON.parse(data) 
-    
-    // try {
-    //   const data = await fs.readFile(contactsPath);
-    //   console.log(data);
-    //   return JSON.parse(data);
-    // } catch (error) {
-    //   console.error('An error occurred while reading contacts:', error);
-    //   throw error; // You can rethrow the error to propagate it to the caller if needed.
-    // }
 }  
   async function getContactById(contactId) {
     const contacts = await listContacts();
@@ -63,32 +54,3 @@ module.exports ={
   removeContact
 }
 
-
-
-
-
-
-
-
-  // const fs = require('fs/promises')
-// const path = require('path')
-
-// const contactsPath = path.join(__dirname, 'contacts.json')
-
-// const a = require('./db/contacts.json')
-// console.log(a)
-
-// const getAll = async() => {
-//     const data = await fs.readFile(contactsPath)
-//     console.log(data)
-//    return JSON.parse(data) 
-// }
-
-// const writeFile = async() => {
-    
-// }
-
-// module.exports ={
-//     getAll,
-//     writeFile
-// }
